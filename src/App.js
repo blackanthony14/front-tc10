@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import {Container} from '@mui/material'
+import {BrowserRouter, Route,Routes} from 'react-router-dom'
+import React from 'react'
+import Navbar from './components/Navbar'
+import NewCita from './components/NewCita';
+import CitasPorximas from './components/CitasPorximas';
+import EditCita from './components/EditCita';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Navbar/>
+    <Container sx={{display:'flex', float:'left'}}>
+      <CitasPorximas sx={{float:'left'}}/>
+    <Routes>
+      <Route path = '/CrearCita' element = {<NewCita/>}></Route>
+      <Route path = '/CitasProximas' element = {<CitasPorximas/>}></Route>
+      <Route path = '/EditarCitas' element = {<EditCita/>}></Route>
+    </Routes>
+    </Container>
+    </BrowserRouter>
   );
 }
 
